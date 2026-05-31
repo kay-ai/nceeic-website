@@ -1,0 +1,13 @@
+/* =============================================================
+   resources/css/app.css
+   Tailwind v4 entry point — imports Flowbite plugin + custom styles
+   ============================================================= */
+
+@import 'tailwindcss';
+@import './nceeic.css';
+
+/* Tell Tailwind to scan Flowbite for utility classes */
+@source "../../node_modules/flowbite";
+
+/* Register the Flowbite plugin */
+@plugin 'flowbite/plugin';

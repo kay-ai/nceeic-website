@@ -1,0 +1,305 @@
+/* =============================================================
+   resources/css/nceeic.css
+   Custom design tokens & reusable component classes for NCEEIC.
+   Imported by app.css — do NOT add @import 'tailwindcss' here.
+   ============================================================= */
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────── */
+:root {
+    --green:      #1e700f;
+    --leaf-green: #1f381a;
+    --dark-green: #0d2225;
+    --navy:       #0D1F3C;
+    --navy2:      #142850;
+    --navy3:      #1a3366;
+    --gold:       #C8922A;
+    --gold2:      #E0A83A;
+    --gold-light: #F5C842;
+    --slate:      #2E4A6B;
+    --slate2:     #3D5A80;
+    --white:      #ffffff;
+    --offwhite:   #F4F6F9;
+    --border:     #DDE2EC;
+    --text:       #1a2233;
+    --muted:      #536180;
+}
+
+/* ── BASE ───────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* ── TAILWIND THEME EXTENSION ───────────────────────────────── */
+/*
+   Tailwind v4 reads CSS variables automatically via @theme.
+   This lets you use classes like bg-navy, text-gold2, etc.
+*/
+@theme {
+    --color-green:      #1e700f;
+    --color-leaf-green: #1f381a;
+    --color-dark-green: #0d2225;
+    --color-navy:       #0D1F3C;
+    --color-navy2:      #142850;
+    --color-navy3:      #1a3366;
+    --color-gold:       #C8922A;
+    --color-gold2:      #E0A83A;
+    --color-gold-light: #F5C842;
+    --color-slate:      #2E4A6B;
+    --color-slate2:     #3D5A80;
+    --color-offwhite:   #F4F6F9;
+    --color-border:     #DDE2EC;
+    --color-text:       #1a2233;
+    --color-muted:      #536180;
+}
+
+/* ── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes slideR {
+    from { opacity: 0; transform: translateX(-24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideL {
+    from { opacity: 0; transform: translateX(24px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+}
+@keyframes barGrow {
+    from { width: 0; }
+    to   { width: 72%; }
+}
+
+.animate-fade-up  { animation: fadeUp  0.65s cubic-bezier(.22,.68,0,1.2) both; }
+.animate-fade-in  { animation: fadeIn  0.5s  ease both; }
+.animate-slide-r  { animation: slideR  0.6s  cubic-bezier(.22,.68,0,1.2) both; }
+.animate-slide-l  { animation: slideL  0.6s  cubic-bezier(.22,.68,0,1.2) both; }
+.animate-scale-in { animation: scaleIn 0.55s cubic-bezier(.22,.68,0,1.2) both; }
+
+/* Scroll-triggered reveal (driven by IntersectionObserver in app.js) */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.22,.68,0,1.2);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Progress bar entrance animation */
+.progress-bar-animated {
+    animation: barGrow 1.4s cubic-bezier(.4,0,.2,1) 1s both;
+}
+
+/* ── TOPBAR ─────────────────────────────────────────────────── */
+.topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+}
+
+.topbar-link {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    padding-left: 12px;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    cursor: pointer;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.topbar-link:hover { color: rgba(255, 255, 255, 0.85); }
+
+/* ── NAVBAR ─────────────────────────────────────────────────── */
+.nav-link {
+    padding: 21px 14px;
+    font-size: 13.5px;
+    color: var(--text);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+}
+.nav-link:hover,
+.nav-link.active {
+    color: var(--gold);
+    /* border-bottom-color: var(--gold); */
+}
+
+.nav-cta {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 9px 20px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.nav-cta:hover { background: var(--gold2); }
+
+/* ── HERO BADGE ─────────────────────────────────────────────── */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200, 146, 42, 0.12);
+    border: 1px solid rgba(200, 146, 42, 0.28);
+    color: var(--gold-light);
+    font-size: 11.5px;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+}
+
+/* ── BUTTONS ────────────────────────────────────────────────── */
+.btn-primary {
+    background: var(--gold);
+    color: var(--dark-green);
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--gold2); }
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    padding: 11px 24px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.btn-outline:hover { background: rgba(255, 255, 255, 0.07); }
+
+.pbtn {
+    padding: 13px 32px;
+    border-radius: 6px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    min-width: 215px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+}
+
+/* ── SECTION LABELS & TITLES ────────────────────────────────── */
+.sec-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--slate2);
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
+}
+/* .sec-label::before {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: var(--gold);
+    display: inline-block;
+    flex-shrink: 0;
+} */
+
+.sec-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--green);
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.sec-desc {
+    color: var(--muted);
+    font-size: 14.5px;
+    max-width: 540px;
+    line-height: 1.72;
+}
+
+/* ── FOOTER ─────────────────────────────────────────────────── */
+.footer-col-title {
+    color: var(--gold2);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.flink {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+.flink:hover { color: rgba(255, 255, 255, 0.85); }
+
+.soc-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+.soc-btn:hover { background: rgba(255, 255, 255, 0.13); }
+.soc-btn i {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.55);
+}
