@@ -47,9 +47,6 @@
         <ul class="flex flex-col px-4 pb-4 pt-2 gap-1 font-medium border-t border-gray-100">
             <li><a href="{{ url('/') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">Home</a></li>
             <li><a href="{{ url('/#about') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">About</a></li>
-            <li><a href="{{ url('/#mandate') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">Mandate</a></li>
-            <li><a href="{{ url('/#portal') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">Programmes</a></li>
-            <li><a href="#" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">Publications</a></li>
             <li><a href="{{ url('/#news') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">News</a></li>
             <li><a href="{{ url('/#footer') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">Contact</a></li>
             <li class="pt-2">
