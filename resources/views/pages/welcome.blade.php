@@ -118,7 +118,7 @@
                 <div class="bg-white/[20%] border border-white/10 rounded-lg p-4">
                     <p class="text-white/80 text-[13px] leading-[1.55]">
                         Established under the
-                        <span class="text-gold2 font-semibold">Federal Ministry of Power</span>,
+                        <span class="text-gold2 font-semibold">Federal Ministry of Innovation Science and Technology</span>,
                         NCEEIC serves as the apex coordinating body for Nigeria's clean energy
                         transition — including the national Hospital Solarisation Programme.
                     </p>
@@ -153,6 +153,112 @@
                 @endforeach
             </ul>
         </div>
+    </div>
+</section>
+
+<section class="bg-offwhite px-6 md:px-[100px] py-[100px]" id="leadership">
+    <div class="max-w-[1400px] mx-auto">
+
+        {{-- Section header --}}
+        <div class="reveal text-center mb-14">
+            <div class="sec-label justify-center">Our Leadership</div>
+            <h2 class="sec-title max-w-[520px] mx-auto">Guided by Experienced Leadership</h2>
+            <p class="sec-desc mx-auto">
+                NCEEIC is led by dedicated professionals committed to driving Nigeria's
+                energy efficiency and renewable energy agenda.
+            </p>
+        </div>
+
+        {{-- Leader card --}}
+        <div class="reveal max-w-[960px] mx-auto">
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-border grid grid-cols-1 md:grid-cols-[370px_1fr]">
+
+                {{-- Photo column --}}
+                <div class="relative bg-[#0d2225] flex flex-col items-center justify-end min-h-[420px] overflow-hidden">
+                    {{-- Decorative background ring --}}
+                    <div class="absolute -top-16 -left-16 w-[280px] h-[280px] rounded-full border-[40px] border-gold/10 pointer-events-none"></div>
+                    <div class="absolute -bottom-10 -right-10 w-[200px] h-[200px] rounded-full border-[30px] border-white/5 pointer-events-none"></div>
+
+                    {{-- Photo --}}
+                    <img
+                        src="{{ asset('img/amb-chijioke-nwadavid.jpeg') }}"
+                        alt="Hon. Chijioke Emmanuel NwaDavid — National Coordinator, NCEEIC"
+                        class="absolute inset-0 w-full h-full object-cover object-top opacity-90"
+                    >
+
+                    {{-- Name plate overlay at bottom of photo --}}
+                    <div class="relative z-10 w-full bg-gradient-to-t from-[#0d2225]/95 via-[#0d2225]/60 to-transparent px-6 pt-16 pb-6">
+                        <div class="inline-flex items-center gap-2 bg-gold/20 border border-gold/30 text-gold2 text-[11px] font-bold px-3 py-1 rounded-full tracking-[0.5px] mb-3">
+                            <i class="ti ti-star-filled text-[10px]"></i> National Coordinator
+                        </div>
+                        <h3 class="text-white text-[18px] font-bold leading-[1.25]">
+                            Hon. Chijioke Emmanuel<br>NwaDavid
+                        </h3>
+                        <p class="text-white/55 text-[12px] mt-1">
+                            National Committee on Energy Efficiency, Nigeria
+                        </p>
+                    </div>
+                </div>
+
+                {{-- Bio column --}}
+                <div class="p-8 md:p-10 flex flex-col justify-center">
+
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-[42px] h-[42px] bg-[#0d2225] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="ti ti-user-star text-gold2 text-[20px]"></i>
+                        </div>
+                        <div>
+                            <div class="text-[13px] font-bold text-dark-green uppercase tracking-[0.8px]">Office of the National Coordinator</div>
+                            <div class="text-[12px] text-muted">National Committee on Energy Efficiency</div>
+                        </div>
+                    </div>
+
+                    <p class="text-muted text-[14px] leading-[1.8] mb-6">
+                        The National Committee on Energy Efficiency, Innovation, and Certification Nigeria
+                        is headed by the <strong class="text-dark-green font-semibold">National Coordinator, Hon. Chijioke Emmanuel NwaDavid</strong>.
+                        Under his leadership, NCEEIC coordinates Nigeria's renewable energy initiatives,
+                        drives innovation across the energy sector, and ensures the implementation of
+                        robust certification standards that meet international benchmarks.
+                    </p>
+
+                    <p class="text-muted text-[14px] leading-[1.8] mb-8">
+                        Hon. NwaDavid brings strategic vision and strong institutional leadership to
+                        NCEEIC's mission of facilitating sustainable development including the
+                        pioneering Hospital Solarization Programme, which is providing clean,
+                        reliable energy to public hospitals across Nigeria.
+                    </p>
+
+                    {{-- Key roles / highlights --}}
+                    {{-- <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+                        @foreach([
+                            ['ti-bolt',             'Energy Policy Leadership'],
+                            ['ti-building-hospital','Hospital Solarization Drive'],
+                            ['ti-certificate',      'Certification Standards'],
+                            ['ti-users',            'Stakeholder Coordination'],
+                        ] as $role)
+                        <div class="flex items-center gap-3 bg-offwhite rounded-lg px-4 py-3">
+                            <div class="w-[32px] h-[32px] bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+                                <i class="ti {{ $role[0] }} text-[16px] text-dark-green"></i>
+                            </div>
+                            <span class="text-[13px] font-semibold text-dark-green">{{ $role[1] }}</span>
+                        </div>
+                        @endforeach
+                    </div> --}}
+
+                    {{-- Contact / quote strip --}}
+                    <div class=" bg-gold/5 rounded-lg px-5 py-4">
+                        <p class="text-[13.5px] text-dark-green font-medium leading-[1.65] italic">
+                            "Nigeria's energy future depends on bold policy, strong institutions, and the
+                            commitment of every stakeholder. NCEEIC is at the centre of that transformation."
+                        </p>
+                        <div class="mt-2 text-[12px] text-muted font-semibold">
+                            - Hon. Chijioke Emmanuel NwaDavid, National Coordinator
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>
 
