@@ -6,16 +6,11 @@
 
             {{-- Brand column --}}
             <div>
-                <a href="{{ url('/') }}" class="flex items-center gap-3 no-underline">
-                    <div class="w-[38px] h-[38px] bg-white/[0.07] rounded-lg flex items-center justify-center">
-                        <i class="ti ti-bolt text-gold text-[18px]"></i>
-                    </div>
-                    <div>
-                        <div class="text-[15px] font-bold text-white">NCEEIC</div>
-                        <div class="text-[10px] text-white/35">Federal Republic of Nigeria</div>
-                    </div>
+                {{-- Logo --}}
+                <a href="{{ url('/') }}" class="flex items-center gap-3 -mt-5 -ml-8 no-underline animate-slide-r">
+                    <img src="{{ asset('img/nceeic-logo.png') }}" alt="NCEEIC Logo" class="h-[120px]">
                 </a>
-                <p class="text-white/50 text-[13px] leading-[1.7] mt-4 mb-5 max-w-[260px]">
+                <p class="text-white/50 text-[13px] leading-[1.7] mb-5 max-w-[260px]">
                     Committed to steering Nigeria towards energy efficiency, innovation, and sustainable development through comprehensive strategies and collaborative efforts.
                 </p>
                 <div class="flex flex-col gap-2">

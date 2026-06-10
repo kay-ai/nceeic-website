@@ -303,3 +303,69 @@ body {
     font-size: 15px;
     color: rgba(255, 255, 255, 0.55);
 }
+
+/* ── PORTAL FORM COMPONENTS ─────────────────────────────────── */
+.portal-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 6px;
+}
+
+.portal-input {
+    width: 100%;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    font-family: inherit;
+    appearance: none;
+}
+
+.portal-input:focus {
+    border-color: var(--dark-green, #1a5c0a);
+    box-shadow: 0 0 0 3px rgba(26, 92, 10, 0.08);
+}
+
+.portal-input::placeholder {
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+textarea.portal-input {
+    resize: vertical;
+    min-height: 100px;
+}
+
+select.portal-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    padding-right: 36px;
+}
+
+.portal-error {
+    font-size: 12px;
+    color: #dc2626;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.portal-error::before {
+    content: '⚠';
+    font-size: 11px;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+.upload-spinner { animation: spin 0.75s linear infinite; }

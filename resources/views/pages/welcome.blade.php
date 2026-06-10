@@ -41,7 +41,7 @@
                 <a href="#mandate" class="btn-primary">
                     <i class="ti ti-arrow-right"></i> Explore Our Mandate
                 </a>
-                <a href="#portal" class="btn-outline">
+                <a href="/portal/apply" class="btn-outline">
                     <i class="ti ti-file-text"></i> Apply for a Grant
                 </a>
             </div>
@@ -72,7 +72,7 @@
                     <i class="ti ti-speakerphone text-gold2 text-[15px] mt-[1px] flex-shrink-0"></i>
                     <p class="text-white/80 text-[12.5px] leading-[1.5]">
                         <strong class="text-gold-light">Grants Open:</strong>
-                        2025 Renewable Energy Innovation Fund — applications close 30 June 2025.
+                        2025 Renewable Energy Innovation Fund. Applications close 30 June 2025.
                     </p>
                 </div>
             </div>
