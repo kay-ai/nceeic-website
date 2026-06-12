@@ -42,7 +42,7 @@
                     <i class="ti ti-arrow-right"></i> Explore Our Mandate
                 </a>
                 <a href="/portal/apply" class="btn-outline">
-                    <i class="ti ti-file-text"></i> Apply for a Grant
+                    <i class="ti ti-file-text"></i> Apply for Solarization
                 </a>
             </div>
         </div>
@@ -59,7 +59,7 @@
                     @foreach([
                         ['12',  'Stakeholders Engaged'],
                         ['5',   'Active Programmes'],
-                        ['1%',  'Renewable Increase'],
+                        ['5%',  'Renewable Increase'],
                     ] as $stat)
                     <div class="bg-white/[0.07] border border-white/[0.07] rounded-lg px-3 py-[25px] text-center">
                         <div class="text-[26px] font-bold text-white">{{ $stat[0] }}</div>
@@ -71,8 +71,8 @@
                 <div class="flex gap-3 items-start mt-8 bg-gold/10 border border-gold/20 rounded-lg p-3">
                     <i class="ti ti-speakerphone text-gold2 text-[15px] mt-[1px] flex-shrink-0"></i>
                     <p class="text-white/80 text-[12.5px] leading-[1.5]">
-                        <strong class="text-gold-light">Grants Open:</strong>
-                        2025 Renewable Energy Innovation Fund. Applications close 30 June 2025.
+                        <strong class="text-gold-light">Application Open:</strong>
+                        2026 Solarization Initiative for Hospitals commences 15th June 20256.
                     </p>
                 </div>
             </div>
@@ -88,7 +88,7 @@
         @foreach([
             ['ti-solar-panel',      'Renewable Energy',      'Solar, wind, hydro & biomass'],
             ['ti-certificate',      'Certification',         'Quality & safety compliance'],
-            ['ti-bulb',             'Innovation Grants',     'R&D and technology funding'],
+            ['ti-bulb',             'Innovation Initiatives',     'R&D and technology funding'],
             ['ti-building-hospital','Hospital Solarisation', 'Healthcare energy access'],
         ] as $item)
         <div class="reveal flex items-center gap-3 px-5 [&:not(:last-child)]:border-r border-white/10">
@@ -111,16 +111,16 @@
     <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[100px] items-center">
 
         {{-- Visual card --}}
-        <div class="reveal bg-[#0d2225] rounded-xl p-9 min-h-[350px] flex flex-col justify-end bg-cover bg-center relative overflow-hidden" style="background-image: url('{{ asset('img/power-house-abuja.jpg') }}');">
+        <div class="reveal bg-[#0d2225] rounded-xl p-9 min-h-[350px] flex flex-col justify-end bg-cover bg-center relative overflow-hidden" style="background-image: url('{{ asset('img/ministry-of-science.webp') }}');">
             <div class="absolute inset-0 bg-black/40 rounded-xl"></div>
             <div class="relative z-10">
                 <i class="ti ti-solar-panel-2 text-[72px] text-white/[0.07] mb-auto pb-5 block"></i>
-                <div class="bg-white/[20%] border border-white/10 rounded-lg p-4">
+                <div class="bg-white/[25%] border border-white/10 rounded-lg p-4">
                     <p class="text-white/80 text-[13px] leading-[1.55]">
                         Established under the
                         <span class="text-gold2 font-semibold">Federal Ministry of Innovation Science and Technology</span>,
                         NCEEIC serves as the apex coordinating body for Nigeria's clean energy
-                        transition — including the national Hospital Solarisation Programme.
+                        transition - including the national Hospital Solarisation Programme.
                     </p>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                             Hon. Chijioke Emmanuel<br>NwaDavid
                         </h3>
                         <p class="text-white/55 text-[12px] mt-1">
-                            National Committee on Energy Efficiency, Nigeria
+                            National Committee on Energy Efficiency, <br/> Innovation, and Certification, Nigeria.
                         </p>
                     </div>
                 </div>
@@ -204,12 +204,12 @@
                 <div class="p-8 md:p-10 flex flex-col justify-center">
 
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-[42px] h-[42px] bg-[#0d2225] rounded-lg flex items-center justify-center flex-shrink-0">
+                        <div class="w-12.5 h-12.5 bg-dark-green rounded-lg flex items-center justify-center shrink-0">
                             <i class="ti ti-user-star text-gold2 text-[20px]"></i>
                         </div>
                         <div>
                             <div class="text-[13px] font-bold text-dark-green uppercase tracking-[0.8px]">Office of the National Coordinator</div>
-                            <div class="text-[12px] text-muted">National Committee on Energy Efficiency</div>
+                            <div class="text-[12px] text-muted">National Committee on Energy Efficiency, <br/> Innovation, and Certification, Nigeria.</div>
                         </div>
                     </div>
 
@@ -248,8 +248,7 @@
                     {{-- Contact / quote strip --}}
                     <div class=" bg-gold/5 rounded-lg px-5 py-4">
                         <p class="text-[13.5px] text-dark-green font-medium leading-[1.65] italic">
-                            "Nigeria's energy future depends on bold policy, strong institutions, and the
-                            commitment of every stakeholder. NCEEIC is at the centre of that transformation."
+                            "Nigeria may be a developing country, but not a dumping ground for substandard energy products."
                         </p>
                         <div class="mt-2 text-[12px] text-muted font-semibold">
                             - Hon. Chijioke Emmanuel NwaDavid, National Coordinator
@@ -271,7 +270,7 @@
             <div class="sec-label justify-center">Our Mandate</div>
             <h2 class="sec-title max-w-[500px] mx-auto">What We Do for Nigeria's Energy Future</h2>
             <p class="sec-desc mx-auto">
-                From policy coordination to hospital solarisation — our six core programmes
+                From policy coordination to hospital solarisation - our six core programmes
                 drive Nigeria's clean energy transition.
             </p>
         </div>
@@ -283,7 +282,7 @@
                 ['ti-bulb',         'Foster Innovation',           'Supporting R&D in innovative energy technologies to stimulate growth and practical solutions tailored to Nigeria\'s unique needs.',             false],
                 ['ti-certificate',  'Standards & Certification',   'Establishing rigorous standards to ensure the quality, safety, and reliability of energy products and services across the nation.',             false],
                 ['ti-hierarchy',    'Policy Coordination',         'Harmonising efforts among government bodies, private stakeholders, and international partners to align with national energy goals.',            false],
-                ['ti-building-hospital', 'Hospital Solarisation Programme', 'Dedicated grant programme enabling public hospitals to apply for solarisation funding, ensuring reliable power for critical healthcare.', true],
+                ['ti-building-hospital', 'Hospital Solarisation Programme', 'A dedicated initiative that enables public hospitals to apply for solarisation funding, ensuring reliable power for critical healthcare.', true],
             ] as $svc)
 
             @if($svc[3])
@@ -355,16 +354,16 @@
         <div class="reveal bg-[#0d2225] rounded-2xl grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 items-center p-[52px]">
 
             <div>
-                <div class="sec-label !text-gold2 before:!bg-gold2">Hospital Solarisation Grant Portal</div>
+                <div class="sec-label !text-gold2 before:!bg-gold2">Hospital Solarisation Initiative Portal</div>
                 <h2 class="sec-title !text-white">Apply for Solarisation Funding</h2>
                 <p class="sec-desc !text-white/65 !max-w-full">
-                    Public hospitals across Nigeria can apply for NCEEIC's Solarisation Grant Programme.
+                    Public hospitals across Nigeria can apply for NCEEIC's Solarisation Initiative.
                     Register your institution, submit documentation, and track your application through our secure portal.
                 </p>
                 <div class="flex flex-col gap-3 mt-6">
                     @foreach([
                         ['1', 'Register your hospital and create an institutional account'],
-                        ['2', 'Complete the grant application and upload required documents'],
+                        ['2', 'Complete the application and upload required documents'],
                         ['3', 'Track application status and receive updates via your dashboard'],
                     ] as $step)
                     <div class="flex items-center gap-3">
@@ -398,10 +397,10 @@
         {{-- Left: description --}}
         <div class="reveal">
             <div class="sec-label">Portal Preview</div>
-            <h2 class="sec-title">Hospital Grant Dashboard</h2>
+            <h2 class="sec-title">Hospital Initiation Dashboard</h2>
             <p class="sec-desc">
                 Once registered, your hospital gets a personalised dashboard to manage your
-                solarisation grant application from submission to approval.
+                solarisation application from submission to approval.
             </p>
             <ul class="mt-5 flex flex-col gap-4 list-none">
                 @foreach([
@@ -446,7 +445,7 @@
             {{-- Stats grid --}}
             <div class="grid grid-cols-2 gap-3 mt-5">
                 @foreach([
-                    ['Grant requested',  '₦48M'],
+                    ['Grid Status',  'Connected'],
                     ['Capacity needed',  '120 kW'],
                     ['Beds served',      '340'],
                     ['Stage',            'Technical Review'],
@@ -497,8 +496,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             @foreach([
-                ['hospital-icu-beds.jpg', 'Announcement', '2025 Hospital Solarisation Grant. Applications Now Open for Public Hospitals',              '15 May 2025'],
-                ['power-house-abuja.jpg', 'Event',        'National Stakeholder Forum on Energy Efficiency Standards. Abuja, June 2025',              '3 May 2025'],
+                ['hospital-icu-beds.jpg', 'Announcement', '2026 Hospital Solarisation Initiative. Applications Now Open for Public Hospitals',              '15th June 2026'],
+                ['ministry-of-science.webp', 'Event',        'National Stakeholder Forum on Energy Efficiency Standards. Abuja, June 2025',              '3 May 2025'],
                 ['solar-panels.jpg','Policy',       'NCEEIC Releases Updated Certification Framework for Solar Installers Nationwide',          '22 April 2025'],
             ] as $news)
             <div class="reveal border border-border rounded-xl overflow-hidden bg-white cursor-pointer hover:shadow-lg transition-shadow">

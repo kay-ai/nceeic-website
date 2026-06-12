@@ -29,7 +29,7 @@
             <a href="{{ url('/#footer') }}" class="nav-link">Contact</a>
 
             <a href="{{ url('/portal/dashboard') }}" class="nav-cta ml-4">
-                <i class="ti ti-file-certificate"></i> Grant Portal
+                <i class="ti ti-file-certificate"></i> Application Portal
             </a>
         </div>
 
@@ -51,7 +51,7 @@
             <li><a href="{{ url('/#footer') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">Contact</a></li>
             <li class="pt-2">
                 <a href="{{ url('/portal/dashboard') }}" class="nav-cta w-full justify-center">
-                    <i class="ti ti-file-certificate"></i> Grant Portal
+                    <i class="ti ti-file-certificate"></i> Application Portal
                 </a>
             </li>
         </ul>
