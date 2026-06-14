@@ -1,10 +1,9 @@
-{{-- resources/views/partials/navbar.blade.php --}}
-<nav class="bg-white border-b-[3px] border-gold shadow-sm sticky top-0 z-50">
+<nav class="bg-white border-b-[3px] py-2 border-gold shadow-sm sticky top-0 z-50">
     <div class="flex items-center justify-between px-6 md:px-[100px]">
 
         {{-- Logo --}}
         <a href="{{ url('/') }}" class="flex items-center gap-3 no-underline animate-slide-r">
-            <img src="{{ asset('img/nceeic-logo.png') }}" alt="NCEEIC Logo" class="h-[100px]">
+            <img src="{{ asset('img/nceeic-logo.png') }}" alt="NCEEIC Logo" class="h-10 lg:h-13.75">
         </a>
 
         {{-- Desktop nav --}}
@@ -16,15 +15,7 @@
             </a>
             <a href="{{ url('/#about') }}" class="nav-link">
                 About
-                {{-- <i class="ti ti-chevron-down text-[11px] text-muted"></i> --}}
             </a>
-            {{-- <a href="{{ url('/#mandate') }}" class="nav-link">
-                Mandate <i class="ti ti-chevron-down text-[11px] text-muted"></i>
-            </a>
-            <a href="{{ url('/#portal') }}" class="nav-link">
-                Programmes <i class="ti ti-chevron-down text-[11px] text-muted"></i>
-            </a>
-            <a href="#" class="nav-link">Publications</a> --}}
             <a href="{{ url('/#news') }}" class="nav-link">News</a>
             <a href="{{ url('/#footer') }}" class="nav-link">Contact</a>
 

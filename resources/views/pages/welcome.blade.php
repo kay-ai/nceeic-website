@@ -397,7 +397,7 @@
         {{-- Left: description --}}
         <div class="reveal">
             <div class="sec-label">Portal Preview</div>
-            <h2 class="sec-title">Hospital Initiation Dashboard</h2>
+            <h2 class="sec-title">Hospital Initiative Dashboard</h2>
             <p class="sec-desc">
                 Once registered, your hospital gets a personalised dashboard to manage your
                 solarisation application from submission to approval.

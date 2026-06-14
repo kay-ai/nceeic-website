@@ -7,8 +7,8 @@
             {{-- Brand column --}}
             <div>
                 {{-- Logo --}}
-                <a href="{{ url('/') }}" class="flex items-center gap-3 -mt-5 -ml-8 no-underline animate-slide-r">
-                    <img src="{{ asset('img/nceeic-logo.png') }}" alt="NCEEIC Logo" class="h-[120px]">
+                <a href="{{ url('/') }}" class="flex items-center gap-3 mb-4 no-underline animate-slide-r">
+                    <img src="{{ asset('img/nceeic-logo.png') }}" alt="NCEEIC Logo" class="h-13.75">
                 </a>
                 <p class="text-white/50 text-[13px] leading-[1.7] mb-5 max-w-[260px]">
                     Committed to steering Nigeria towards energy efficiency, innovation, and sustainable development through comprehensive strategies and collaborative efforts.
@@ -28,10 +28,10 @@
                     </div>
                 </div>
                 <div class="flex gap-2 mt-4">
-                    <a href="#" class="soc-btn"><i class="ti ti-brand-twitter"></i></a>
-                    <a href="#" class="soc-btn"><i class="ti ti-brand-instagram"></i></a>
-                    <a href="#" class="soc-btn"><i class="ti ti-brand-linkedin"></i></a>
-                    <a href="#" class="soc-btn"><i class="ti ti-brand-facebook"></i></a>
+                    {{-- <a href="#" class="soc-btn"><i class="ti ti-brand-twitter"></i></a> --}}
+                    <a href="https://www.instagram.com/officialnceeic?igsh=eTJsaWppeHJveGl5" class="soc-btn"><i class="ti ti-brand-instagram"></i></a>
+                    {{-- <a href="#" class="soc-btn"><i class="ti ti-brand-linkedin"></i></a>
+                    <a href="#" class="soc-btn"><i class="ti ti-brand-facebook"></i></a> --}}
                 </div>
             </div>
 
