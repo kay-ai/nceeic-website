@@ -72,7 +72,7 @@
                     <i class="ti ti-speakerphone text-gold2 text-[15px] mt-[1px] flex-shrink-0"></i>
                     <p class="text-white/80 text-[12.5px] leading-[1.5]">
                         <strong class="text-gold-light">Application Open:</strong>
-                        2026 Solarization Initiative for Hospitals commences 15th June 20256.
+                        2026 Solarization Initiative for Hospitals commences 15th June 2026.
                     </p>
                 </div>
             </div>
@@ -248,7 +248,7 @@
                     {{-- Contact / quote strip --}}
                     <div class=" bg-gold/5 rounded-lg px-5 py-4">
                         <p class="text-[13.5px] text-dark-green font-medium leading-[1.65] italic">
-                            "Nigeria may be a developing country, but not a dumping ground for substandard energy products."
+                            "Nigeria may be a developing country, but not a dumping ground for substandard renewable energy products."
                         </p>
                         <div class="mt-2 text-[12px] text-muted font-semibold">
                             - Hon. Chijioke Emmanuel NwaDavid, National Coordinator
@@ -496,9 +496,9 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             @foreach([
-                ['hospital-icu-beds.jpg', 'Announcement', '2026 Hospital Solarisation Initiative. Applications Now Open for Public Hospitals',              '15th June 2026'],
-                ['ministry-of-science.webp', 'Event',        'National Stakeholder Forum on Energy Efficiency Standards. Abuja, June 2025',              '3 May 2025'],
-                ['solar-panels.jpg','Policy',       'NCEEIC Releases Updated Certification Framework for Solar Installers Nationwide',          '22 April 2025'],
+                ['hospital-icu-beds.jpg', 'Announcement', '2026 Hospital Solarisation Initiative. Applications Now Open for Hospitals',              '15th June 2026'],
+                ['ministry-of-science.webp', 'Event',        'National Stakeholder Forum on Energy Efficiency Standards. Abuja, June 2025',              '3 May 2026'],
+                ['solar-panels.jpg','Policy',       'NCEEIC Releases Updated Certification Framework for Solar Installers Nationwide',          '22 April 2026'],
             ] as $news)
             <div class="reveal border border-border rounded-xl overflow-hidden bg-white cursor-pointer hover:shadow-lg transition-shadow">
                 <div class="h-[220px] overflow-hidden flex items-center justify-center bg-gray-200">
