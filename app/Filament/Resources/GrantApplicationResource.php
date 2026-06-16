@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\GrantApplicationResource\Pages;
 use App\Models\GrantApplication;
+use App\Models\ApplicationReview;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -11,13 +12,14 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Filters\TernaryFilter;
+use Filament\Notifications\Notification;
 
 class GrantApplicationResource extends Resource
 {
     protected static ?string $model = GrantApplication::class;
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationGroup = 'Grant Management';
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
     protected static ?string $recordTitleAttribute = 'application_id';
 
     public static function form(Form $form): Form
@@ -38,43 +40,130 @@ class GrantApplicationResource extends Resource
                             'site_visit_scheduled' => 'Site Visit Scheduled',
                             'approved'             => 'Approved',
                         ])
-                        ->required(),
+                        ->required()
+                        ->live(),
                     Forms\Components\DateTimePicker::make('submitted_at')->disabled(),
                 ])
                 ->columns(2),
 
-            Forms\Components\Section::make('Scoring')
+            Forms\Components\Section::make('Vetting & Scoring')
                 ->schema([
-                    Forms\Components\TextInput::make('total_score')->disabled()->suffix('/ 100'),
-                    Forms\Components\TextInput::make('score_percentage')->disabled()->suffix('%'),
-                    Forms\Components\Toggle::make('is_qualified')->disabled()->label('Qualified (≥70%)'),
+                    Forms\Components\Tabs::make('Scoring Tabs')
+                        ->tabs([
+                            Forms\Components\Tabs\Tab::make('Score Breakdown')
+                                ->schema([
+                                    Forms\Components\TextInput::make('score_ownership')
+                                        ->numeric()->minValue(0)->maxValue(15)
+                                        ->label('Ownership Score (max 15)')
+                                        ->helperText('Government, private, or faith-based scoring'),
+                                    Forms\Components\TextInput::make('score_beds')
+                                        ->numeric()->minValue(0)->maxValue(10)
+                                        ->label('Number of Beds (max 10)')
+                                        ->helperText('Based on facility size'),
+                                    Forms\Components\TextInput::make('score_icu_or')
+                                        ->numeric()->minValue(0)->maxValue(15)
+                                        ->label('ICU/OR Score (max 15)')
+                                        ->helperText('Presence of ICU/OR units'),
+                                    Forms\Components\TextInput::make('score_revenue_mix')
+                                        ->numeric()->minValue(0)->maxValue(10)
+                                        ->label('Revenue Mix (max 10)')
+                                        ->helperText('Cash revenue percentage'),
+                                    Forms\Components\TextInput::make('score_energy_use')
+                                        ->numeric()->minValue(0)->maxValue(15)
+                                        ->label('Energy Use (max 15)')
+                                        ->helperText('Energy consumption level'),
+                                    Forms\Components\TextInput::make('score_iso')
+                                        ->numeric()->minValue(0)->maxValue(15)
+                                        ->label('ISO Compliance (max 15)')
+                                        ->helperText('ISO certification status'),
+                                    Forms\Components\TextInput::make('score_cofinancing')
+                                        ->numeric()->minValue(0)->maxValue(10)
+                                        ->label('Co-financing (max 10)')
+                                        ->helperText('Co-financing commitment'),
+                                    Forms\Components\TextInput::make('score_maintenance')
+                                        ->numeric()->minValue(0)->maxValue(10)
+                                        ->label('Maintenance (max 10)')
+                                        ->helperText('Maintenance reserve policy'),
+                                ])
+                                ->columns(2)
+                                ->afterStateUpdated(function ($record) {
+                                    if ($record) {
+                                        $total = ($record->score_ownership ?? 0) +
+                                                 ($record->score_beds ?? 0) +
+                                                 ($record->score_icu_or ?? 0) +
+                                                 ($record->score_revenue_mix ?? 0) +
+                                                 ($record->score_energy_use ?? 0) +
+                                                 ($record->score_iso ?? 0) +
+                                                 ($record->score_cofinancing ?? 0) +
+                                                 ($record->score_maintenance ?? 0);
+                                        $record->update([
+                                            'total_score' => $total,
+                                            'score_percentage' => round(($total / 100) * 100, 2),
+                                            'is_qualified' => $total >= 70,
+                                        ]);
+                                    }
+                                }),
+
+                            Forms\Components\Tabs\Tab::make('Summary')
+                                ->schema([
+                                    Forms\Components\Group::make()
+                                        ->schema([
+                                            Forms\Components\TextInput::make('total_score')
+                                                ->disabled()
+                                                ->suffix('/ 100')
+                                                ->columnSpanFull(),
+                                            Forms\Components\TextInput::make('score_percentage')
+                                                ->disabled()
+                                                ->suffix('%')
+                                                ->columnSpanFull(),
+                                            Forms\Components\Checkbox::make('is_qualified')
+                                                ->disabled()
+                                                ->label('Qualified (≥70%)')
+                                                ->columnSpanFull(),
+                                        ]),
+                                ]),
+                        ]),
+                ])
+                ->collapsed(false),
+
+            Forms\Components\Section::make('Admin Review & Decision')
+                ->schema([
+                    Forms\Components\Select::make('status')
+                        ->options([
+                            'draft'                => 'Draft',
+                            'submitted'            => 'Submitted',
+                            'under_review'         => 'Under Review',
+                            'shortlisted'          => 'Shortlisted',
+                            'rejected'             => 'Rejected',
+                            'site_visit_scheduled' => 'Site Visit Scheduled',
+                            'approved'             => 'Approved',
+                        ])
+                        ->required()
+                        ->columnSpanFull(),
+
                     Forms\Components\TextInput::make('admin_score_override')
                         ->numeric()->minValue(0)->maxValue(100)
-                        ->label('Admin Score Override')
+                        ->label('Admin Score Override (Optional)')
                         ->helperText('Override the calculated score if needed.'),
-                ])
-                ->columns(2),
 
-            Forms\Components\Section::make('Score Breakdown (Read-only)')
-                ->schema([
-                    Forms\Components\TextInput::make('score_ownership')->disabled()->label('Ownership (max 15)'),
-                    Forms\Components\TextInput::make('score_beds')->disabled()->label('Beds (max 10)'),
-                    Forms\Components\TextInput::make('score_icu_or')->disabled()->label('ICU/OR (max 15)'),
-                    Forms\Components\TextInput::make('score_revenue_mix')->disabled()->label('Revenue Mix (max 10)'),
-                    Forms\Components\TextInput::make('score_energy_use')->disabled()->label('Energy Use (max 15)'),
-                    Forms\Components\TextInput::make('score_iso')->disabled()->label('ISO (max 15)'),
-                    Forms\Components\TextInput::make('score_cofinancing')->disabled()->label('Co-financing (max 10)'),
-                    Forms\Components\TextInput::make('score_maintenance')->disabled()->label('Maintenance (max 10)'),
-                ])
-                ->columns(4)
-                ->collapsed(),
+                    Forms\Components\Toggle::make('site_visit_required')
+                        ->label('Site Visit Required?')
+                        ->live(),
 
-            Forms\Components\Section::make('Admin Review')
-                ->schema([
-                    Forms\Components\Textarea::make('admin_notes')->rows(4)->label('Internal Notes'),
-                    Forms\Components\Toggle::make('site_visit_required'),
                     Forms\Components\DateTimePicker::make('site_visit_date')
+                        ->label('Scheduled Site Visit Date')
                         ->visible(fn ($get) => $get('site_visit_required')),
+
+                    Forms\Components\Textarea::make('admin_notes')
+                        ->rows(5)
+                        ->label('Internal Vetting Notes')
+                        ->columnSpanFull()
+                        ->helperText('Add comments, observations, or concerns during vetting process'),
+
+                    Forms\Components\TextInput::make('reviewed_by')
+                        ->disabled()
+                        ->label('Last Reviewed By')
+                        ->columnSpanFull(),
                 ])
                 ->columns(2),
 
@@ -145,6 +234,11 @@ class GrantApplicationResource extends Resource
                 Tables\Columns\TextColumn::make('hospital.hospital_name')
                     ->searchable()->sortable()->label('Hospital'),
 
+                Tables\Columns\TextColumn::make('hospital.state')
+                    ->label('State')
+                    ->searchable()
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('hospital.ownership_type')
                     ->label('Type')
                     ->badge()
@@ -153,8 +247,8 @@ class GrantApplicationResource extends Resource
                 Tables\Columns\TextColumn::make('score_percentage')
                     ->label('Score')
                     ->sortable()
-                    ->formatStateUsing(fn ($state) => $state . '%')
-                    ->color(fn ($state) => $state >= 70 ? 'success' : 'danger'),
+                    ->formatStateUsing(fn ($state) => $state ? $state . '%' : '—')
+                    ->color(fn ($state) => $state ? ($state >= 70 ? 'success' : 'danger') : 'gray'),
 
                 Tables\Columns\IconColumn::make('is_qualified')
                     ->label('Qualified')
@@ -197,35 +291,87 @@ class GrantApplicationResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('mark_under_review')
-                    ->label('Mark Under Review')
-                    ->icon('heroicon-o-magnifying-glass')
-                    ->color('warning')
-                    ->action(fn ($record) => $record->update(['status' => 'under_review']))
-                    ->visible(fn ($record) => $record->status === 'submitted'),
 
-                Tables\Actions\Action::make('shortlist')
-                    ->label('Shortlist')
-                    ->icon('heroicon-o-star')
+                Tables\Actions\Action::make('vet')
+                    ->label('Vet & Score')
+                    ->icon('heroicon-o-magnifying-glass')
+                    ->color('info')
+                    ->url(fn ($record) => route('filament.admin.resources.grant-applications.edit', $record))
+                    ->visible(fn ($record) => in_array($record->status, ['submitted', 'under_review'])),
+
+                Tables\Actions\Action::make('approve')
+                    ->label('Approve')
+                    ->icon('heroicon-o-check-circle')
                     ->color('success')
                     ->requiresConfirmation()
-                    ->action(fn ($record) => $record->update(['status' => 'shortlisted']))
-                    ->visible(fn ($record) => $record->status === 'under_review'),
+                    ->modalHeading('Approve Application')
+                    ->modalDescription('Are you sure you want to approve this application? This action will set the status to "Approved".')
+                    ->action(function ($record) {
+                        $record->update([
+                            'status' => 'approved',
+                            'reviewed_by' => auth()->id(),
+                        ]);
+                        Notification::make()
+                            ->title('Application Approved')
+                            ->success()
+                            ->send();
+                    })
+                    ->visible(fn ($record) => in_array($record->status, ['shortlisted', 'under_review']) && $record->is_qualified),
 
                 Tables\Actions\Action::make('reject')
                     ->label('Reject')
                     ->icon('heroicon-o-x-circle')
                     ->color('danger')
                     ->requiresConfirmation()
-                    ->action(fn ($record) => $record->update(['status' => 'rejected']))
-                    ->visible(fn ($record) => in_array($record->status, ['submitted', 'under_review'])),
+                    ->modalHeading('Reject Application')
+                    ->modalDescription('Are you sure you want to reject this application? Please ensure you have documented the reason in admin notes.')
+                    ->action(function ($record) {
+                        $record->update([
+                            'status' => 'rejected',
+                            'reviewed_by' => auth()->id(),
+                        ]);
+                        Notification::make()
+                            ->title('Application Rejected')
+                            ->warning()
+                            ->send();
+                    })
+                    ->visible(fn ($record) => in_array($record->status, ['submitted', 'under_review', 'shortlisted'])),
+
+                Tables\Actions\Action::make('mark_site_visit')
+                    ->label('Schedule Site Visit')
+                    ->icon('heroicon-o-calendar')
+                    ->color('warning')
+                    ->action(function ($record) {
+                        $record->update(['status' => 'site_visit_scheduled']);
+                        Notification::make()
+                            ->title('Site Visit Scheduled')
+                            ->success()
+                            ->send();
+                    })
+                    ->visible(fn ($record) => $record->status === 'shortlisted' && $record->site_visit_required),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\BulkAction::make('mark_under_review')
                         ->label('Mark as Under Review')
                         ->icon('heroicon-o-magnifying-glass')
-                        ->action(fn ($records) => $records->each->update(['status' => 'under_review'])),
+                        ->action(fn ($records) => $records->each->update(['status' => 'under_review']))
+                        ->deselectRecordsAfterCompletion(),
+                    Tables\Actions\BulkAction::make('bulk_approve')
+                        ->label('Bulk Approve (Qualified Only)')
+                        ->icon('heroicon-o-check-circle')
+                        ->action(function ($records) {
+                            $records->filter(fn ($r) => $r->is_qualified && $r->score_percentage >= 70)
+                                ->each->update([
+                                    'status' => 'approved',
+                                    'reviewed_by' => auth()->id(),
+                                ]);
+                            Notification::make()
+                                ->title('Applications Approved')
+                                ->success()
+                                ->send();
+                        })
+                        ->deselectRecordsAfterCompletion(),
                     Tables\Actions\ExportBulkAction::make(),
                 ]),
             ])
@@ -241,14 +387,15 @@ class GrantApplicationResource extends Resource
     {
         return [
             'index'  => Pages\ListGrantApplications::route('/'),
-            'create' => Pages\CreateGrantApplication::route('/create'),
+
             'edit'   => Pages\EditGrantApplication::route('/{record}/edit'),
         ];
     }
 
     public static function getNavigationBadge(): ?string
     {
-        return static::getModel()::where('status', 'submitted')->count() ?: null;
+        $pendingCount = static::getModel()::whereIn('status', ['submitted', 'under_review'])->count();
+        return $pendingCount ?: null;
     }
 
     public static function getNavigationBadgeColor(): ?string

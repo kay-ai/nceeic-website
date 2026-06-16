@@ -17,7 +17,7 @@ class HospitalResource extends Resource
     protected static ?string $model = Hospital::class;
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
     protected static ?string $navigationGroup = 'Grant Management';
-    protected static ?int $navigationSort = 1;
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -117,7 +117,7 @@ class HospitalResource extends Resource
     {
         return [
             'index'  => Pages\ListHospitals::route('/'),
-            'create' => Pages\CreateHospital::route('/create'),
+
             'edit'   => Pages\EditHospital::route('/{record}/edit'),
         ];
     }
