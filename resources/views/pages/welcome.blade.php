@@ -3,6 +3,10 @@
 
 @section('title', 'NCEEIC | Powering Nigeria\'s Energy Future')
 
+@php
+    $newsArticles = \App\Models\Article::published()->latest()->take(3)->get();
+@endphp
+
 @section('content')
 
 {{-- ═══════════════════════════════════════════════
@@ -489,29 +493,27 @@
                 <div class="sec-label">News &amp; Events</div>
                 <h2 class="sec-title !mb-0">Latest from NCEEIC</h2>
             </div>
-            <a href="#" class="inline-flex items-center gap-1 text-gold text-[12.5px] font-bold no-underline">
+            <a href="{{ route('articles.index') }}" class="inline-flex items-center gap-1 text-gold text-[12.5px] font-bold no-underline">
                 View all <i class="ti ti-arrow-right text-[12px]"></i>
             </a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-            @foreach([
-                ['hospital-icu-beds.jpg', 'Announcement', '2026 Hospital Solarisation Initiative. Applications Now Open for Hospitals',              '15th June 2026'],
-                ['ministry-of-science.webp', 'Event',        'National Stakeholder Forum on Energy Efficiency Standards. Abuja, June 2025',              '3 May 2026'],
-                ['solar-panels.jpg','Policy',       'NCEEIC Releases Updated Certification Framework for Solar Installers Nationwide',          '22 April 2026'],
-            ] as $news)
-            <div class="reveal border border-border rounded-xl overflow-hidden bg-white cursor-pointer hover:shadow-lg transition-shadow">
-                <div class="h-[220px] overflow-hidden flex items-center justify-center bg-gray-200">
-                    <img src="{{ asset('img/' . $news[0]) }}" alt="{{ $news[1] }}" class="w-full h-full object-cover">
-                </div>
-                <div class="p-5">
-                    <div class="text-[11px] text-slate2 font-bold uppercase tracking-[0.8px] mb-2">{{ $news[1] }}</div>
-                    <div class="text-[14px] font-semibold text-dark-green leading-[1.45] mb-3">{{ $news[2] }}</div>
-                    <div class="flex items-center gap-1 text-[12px] text-muted">
-                        <i class="ti ti-calendar text-[12px]"></i> {{ $news[3] }}
+            @foreach($newsArticles as $article)
+            <a href="{{ route('articles.show', $article) }}" class="group">
+                <div class="reveal border border-border rounded-xl overflow-hidden bg-white cursor-pointer hover:shadow-lg transition-shadow">
+                    <div class="h-[220px] overflow-hidden flex items-center justify-center bg-gray-200">
+                        <img src="{{ asset('img/' . $article->image) }}" alt="{{ $article->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div class="p-5">
+                        <div class="text-[11px] text-slate2 font-bold uppercase tracking-[0.8px] mb-2">{{ $article->category }}</div>
+                        <div class="text-[14px] font-semibold text-dark-green leading-[1.45] mb-3">{{ $article->title }}</div>
+                        <div class="flex items-center gap-1 text-[12px] text-muted">
+                            <i class="ti ti-calendar text-[12px]"></i> {{ $article->published_at->format('j M Y') }}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             @endforeach
         </div>
     </div>

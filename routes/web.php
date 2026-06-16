@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Portal\AuthController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Requests\HospitalEmailVerificationRequest;
 use App\Livewire\Portal\StepOne;
 use App\Livewire\Portal\StepTwo;
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('pages.welcome');
 })->name('home');
+
+Route::get('/news', [ArticleController::class, 'index'])->name('articles.index');
+Route::get('/news/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
 
 
 Route::get('/portal/login', Login::class)

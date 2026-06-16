@@ -16,7 +16,7 @@
             <a href="{{ url('/#about') }}" class="nav-link">
                 About
             </a>
-            <a href="{{ url('/#news') }}" class="nav-link">News</a>
+            <a href="{{ route('articles.index') }}" class="nav-link">News</a>
             <a href="{{ url('/#footer') }}" class="nav-link">Contact</a>
 
             <a href="{{ url('/portal/dashboard') }}" class="nav-cta ml-4">
@@ -38,7 +38,7 @@
         <ul class="flex flex-col px-4 pb-4 pt-2 gap-1 font-medium border-t border-gray-100">
             <li><a href="{{ url('/') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">Home</a></li>
             <li><a href="{{ url('/#about') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">About</a></li>
-            <li><a href="{{ url('/#news') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">News</a></li>
+            <li><a href="{{ route('articles.index') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">News</a></li>
             <li><a href="{{ url('/#footer') }}" class="block py-2 px-3 text-dark-green rounded hover:bg-offwhite">Contact</a></li>
             <li class="pt-2">
                 <a href="{{ url('/portal/dashboard') }}" class="nav-cta w-full justify-center">
