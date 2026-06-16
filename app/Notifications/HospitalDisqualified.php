@@ -39,9 +39,9 @@ class HospitalDisqualified extends Notification
             ->line('• A minimum of **50 beds**')
             ->line('• At least **20%** of revenue from health insurance')
             ->line('If you believe this assessment is incorrect, or if your hospital\'s situation changes in the future, please do not hesitate to contact us for a manual review.')
-            ->action('Contact NCEEIC Grants Team', 'mailto:grants@nceeic.org')
+            ->action('Contact NCEEIC Grants Team', 'mailto:info@nceeic.org')
             ->line('We encourage you to reapply in a future cycle once your hospital meets the criteria.')
-            ->salutation('Regards, NCEEIC Grants Team | grants@nceeic.org | +234 809 101 0103');
+            ->salutation('Regards, NCEEIC Grants Team | info@nceeic.org | +234 809 101 0103');
 
         return $mail;
     }

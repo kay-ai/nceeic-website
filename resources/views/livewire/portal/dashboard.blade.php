@@ -87,9 +87,9 @@
                     contact the NCEEIC grants team to request a manual review.
                 </p>
                 <div class="flex flex-wrap gap-3">
-                    <a href="mailto:grants@nceeic.org?subject=Manual Review Request - {{ $hospital->hospital_name }}"
+                    <a href="mailto:info@nceeic.org?subject=Manual Review Request - {{ $hospital->hospital_name }}"
                        class="inline-flex items-center gap-2 bg-dark-green text-white px-5 py-2.5 rounded-lg text-[13px] font-bold no-underline hover:bg-leaf-green transition-colors">
-                        <i class="ti ti-mail"></i> grants@nceeic.org
+                        <i class="ti ti-mail"></i> info@nceeic.org
                     </a>
                     <a href="tel:+2348091010103"
                        class="inline-flex items-center gap-2 border border-border bg-white text-navy px-5 py-2.5 rounded-lg text-[13px] font-bold no-underline hover:bg-offwhite transition-colors">
@@ -290,7 +290,7 @@
     <div class="bg-dark-green/5 border border-border rounded-xl p-5 text-[13px] text-muted text-center mt-5">
         <i class="ti ti-help-circle text-[16px] mr-1"></i>
         Have questions about your application? Contact the NCEEIC grants team at
-        <a href="mailto:grants@nceeic.org" class="text-gold font-semibold hover:underline">grants@nceeic.org</a>
+        <a href="mailto:info@nceeic.org" class="text-gold font-semibold hover:underline">info@nceeic.org</a>
         or call <strong class="text-dark-green">+234 809 101 0103</strong>
     </div>
 

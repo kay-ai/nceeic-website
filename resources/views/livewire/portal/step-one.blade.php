@@ -49,9 +49,9 @@
             If you believe this is an error or wish to request a manual review,
             please contact us at:
         </p>
-        <a href="mailto:grants@nceeic.org"
+        <a href="mailto:info@nceeic.org"
            class="inline-flex items-center gap-2 bg-dark-green text-white px-6 py-3 rounded-lg text-[14px] font-semibold no-underline hover:bg-leaf-green">
-            <i class="ti ti-mail"></i> grants@nceeic.org
+            <i class="ti ti-mail"></i> info@nceeic.org
         </a>
     </div>
     @else

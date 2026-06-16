@@ -90,7 +90,7 @@
                     </p>
                     <p class="text-[12px] text-muted mt-3">
                         Need help? Contact
-                        <a href="mailto:grants@nceeic.org" class="text-gold hover:underline">grants@nceeic.org</a>
+                        <a href="mailto:info@nceeic.org" class="text-gold hover:underline">info@nceeic.org</a>
                     </p>
                 </div>
             </div>

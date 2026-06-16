@@ -95,9 +95,9 @@
                     contact our team for a manual evaluation.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                    <a href="mailto:grants@nceeic.org?subject=Manual Review Request - {{ $application?->application_id }}"
+                    <a href="mailto:info@nceeic.org?subject=Manual Review Request - {{ $application?->application_id }}"
                        class="inline-flex items-center justify-center gap-2 bg-dark-green text-white px-6 py-3 rounded-lg text-[13.5px] font-bold hover:bg-leaf-green no-underline">
-                        <i class="ti ti-mail"></i> Email grants@nceeic.org
+                        <i class="ti ti-mail"></i> Email info@nceeic.org
                     </a>
                     <a href="{{ route('portal.dashboard') }}"
                        class="inline-flex items-center justify-center gap-2 border border-border text-muted px-6 py-3 rounded-lg text-[13.5px] font-semibold hover:bg-offwhite no-underline">

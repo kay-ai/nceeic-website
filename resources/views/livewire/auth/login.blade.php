@@ -99,8 +99,8 @@
         <i class="ti ti-info-circle text-green-500 text-[16px] flex-shrink-0 mt-0.5"></i>
         <p>
             This portal is for <strong>registered hospitals</strong> participating in the
-            NCEEIC Solarisation Grant Programme. If you need assistance, contact
-            <a href="mailto:grants@nceeic.org" class="underline font-semibold">grants@nceeic.org</a>.
+            NCEEIC Solarisation Programme. If you need assistance, contact
+            <a href="mailto:info@nceeic.org" class="underline font-semibold">info@nceeic.org</a>.
         </p>
     </div>
 
